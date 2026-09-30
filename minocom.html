@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MINICOM Rwanda System</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* NAV */
+nav{
+    background:#c62828;
+    color:white;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* HERO */
+.hero{
+    height:60vh;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1508385082359-f38ae991e8f2');
+    background-size:cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+}
+
+/* SECTIONS */
+.section{
+    padding:50px 8%;
+    text-align:center;
+}
+
+h2{
+    margin-bottom:20px;
+    color:#c62828;
+}
+
+/* FORM */
+input{
+    padding:10px;
+    margin:5px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+button{
+    padding:10px 15px;
+    background:#ffd700;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+button:hover{
+    background:white;
+}
+
+/* CARDS */
+.card{
+    background:white;
+    padding:15px;
+    margin:10px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+/* DASHBOARD */
+.dashboard{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:200px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+.back-home{
+   position: fixed;
+   top: 90px;
+   left: 20px;
+   background:#009639;
+   color:white;
+   padding:10px 15px;
+   border-radius:8px;
+   text-decoration:none;
+   font-weight:600;
+   z-index:999;
+}
+
+.back-home:hover{
+   background:#007a2a;
+}
+/* FOOTER */
+footer{
+    background:black;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<a href="martha.html" class="back-home">
+   ⬅ Back Home
+</a>
+
+<!-- BUSINESS REGISTRATION -->
+<div class="section">
+<h2>Business Registration</h2>
+
+<input id="bizName" placeholder="Business Name">
+<input id="owner" placeholder="Owner">
+<input id="sector" placeholder="Sector">
+<button onclick="addBusiness()">Register</button>
+
+<div id="bizList" class="grid"></div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section">
+<h2>Made in Rwanda Products</h2>
+
+<input id="product" placeholder="Product Name">
+<input id="price" placeholder="Price">
+<button onclick="addProduct()">Add</button>
+
+<div id="productList" class="grid"></div>
+</div>
+
+<!-- SME -->
+<div class="section">
+<h2>SME Support Application</h2>
+
+<input id="smeName" placeholder="SME Name">
+<input id="capital" placeholder="Capital Needed">
+<button onclick="applySME()">Apply</button>
+</div>
+
+<!-- DASHBOARD -->
+<div class="section">
+<h2>Trade Dashboard</h2>
+
+<div class="dashboard">
+    <div class="box">
+        <h3>Exports</h3>
+        <p id="exp">0</p>
+    </div>
+
+    <div class="box">
+        <h3>Imports</h3>
+        <p id="imp">0</p>
+    </div>
+</div>
+
+<button onclick="loadStats()">Load Stats</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 MINICOM Rwanda System</p>
+</footer>
+
+<script>
+
+/* BUSINESS */
+function addBusiness(){
+    let data = JSON.parse(localStorage.getItem("businesses")) || [];
+
+    data.push({
+        name: bizName.value,
+        owner: owner.value,
+        sector: sector.value
+    });
+
+    localStorage.setItem("businesses", JSON.stringify(data));
+    showBiz();
+}
+
+function showBiz(){
+    let data = JSON.parse(localStorage.getItem("businesses")) || [];
+    let out = "";
+
+    data.forEach(b=>{
+        out += `<div class="card">
+        <b>${b.name}</b><br>${b.owner}<br>${b.sector}
+        </div>`;
+    });
+
+    bizList.innerHTML = out;
+}
+
+/* PRODUCTS */
+function addProduct(){
+    let data = JSON.parse(localStorage.getItem("products")) || [];
+
+    data.push({
+        name: product.value,
+        price: price.value
+    });
+
+    localStorage.setItem("products", JSON.stringify(data));
+    showProducts();
+}
+
+function showProducts(){
+    let data = JSON.parse(localStorage.getItem("products")) || [];
+    let out = "";
+
+    data.forEach(p=>{
+        out += `<div class="card">
+        <b>${p.name}</b><br>${p.price} RWF
+        </div>`;
+    });
+
+    productList.innerHTML = out;
+}
+
+/* SME */
+function applySME(){
+    let data = JSON.parse(localStorage.getItem("smes")) || [];
+
+    data.push({
+        name: smeName.value,
+        capital: capital.value,
+        status: "Pending"
+    });
+
+    localStorage.setItem("smes", JSON.stringify(data));
+    alert("SME Application Submitted ✔");
+}
+
+/* DASHBOARD */
+function loadStats(){
+    exp.innerText = Math.floor(Math.random()*1000);
+    imp.innerText = Math.floor(Math.random()*2000);
+}
+
+/* INIT */
+showBiz();
+showProducts();
+
+</script>
+
+</body>
+</html>

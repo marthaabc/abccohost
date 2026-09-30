@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNICEF Rwanda</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6f9;
+}
+
+
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+}
+
+
+.hero h1{
+    font-size:60px;
+}
+
+.hero span{
+    color:#ffd700;
+}
+
+/* BUTTON */
+.btn{
+    background:#ffd700;
+    color:black;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* SECTION */
+.section{
+    padding:80px 8%;
+    text-align:center;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    margin:15px;
+    display:inline-block;
+    width:250px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.back-home{
+   position: fixed;
+   top: 90px;
+   left: 20px;
+   background:#009639;
+   color:white;
+   padding:10px 15px;
+   border-radius:8px;
+   text-decoration:none;
+   font-weight:600;
+   z-index:999;
+}
+
+.back-home:hover{
+   background:#007a2a;
+}
+/* FOOTER */
+footer{
+    background:#000;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .hero h1{
+        font-size:35px;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<a href="martha.html" class="back-home">
+   ⬅ Back Home
+</a>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+    <h2>About UNICEF</h2>
+    <p>UNICEF works to protect children, improve education, health and safety in Rwanda.</p>
+</div>
+
+<!-- WORK -->
+<div class="section" id="work">
+    <h2>Our Work</h2>
+
+    <div class="card">
+        <i class="fa-solid fa-heart"></i>
+        <h3>Child Health</h3>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-book"></i>
+        <h3>Education</h3>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-shield"></i>
+        <h3>Protection</h3>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+    <h2>Contact</h2>
+    <p>Email: rwanda@unicef.org</p>
+    <p>Hotline: 111</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 UNICEF Rwanda</p>
+</footer>
+
+</body>
+</html>

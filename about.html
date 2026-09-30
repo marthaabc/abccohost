@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | ABC CO MIS</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --yellow: #FFD000;
+  --yellow-deep: #F5C200;
+  --yellow-pale: #FFFBEA;
+  --yellow-glow: rgba(255,208,0,0.15);
+  --black: #0D0D0D;
+  --black-soft: #1A1A1A;
+  --white: #FAFAF7;
+  --gray-100: #F4F3EF;
+  --gray-400: #999890;
+  --gray-600: #555450;
+  --ease: cubic-bezier(0.22,1,0.36,1);
+  --transition: 0.4s var(--ease);
+  --radius: 16px;
+  --radius-sm: 8px;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; line-height: 1.65; overflow-x: hidden; }
+
+/* NOISE */
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999; opacity:0.4;
+}
+
+/* NAVBAR */
+nav {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:0 56px; background:var(--black);
+  position:sticky; top:0; z-index:1000; height:68px;
+  border-bottom:1px solid rgba(255,208,0,0.12);
+}
+.nav-logo { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:2px; text-decoration:none; color:var(--yellow); }
+.nav-logo span { color:rgba(255,208,0,0.45); }
+.nav-links { display:flex; gap:2px; list-style:none; align-items:center; }
+.nav-links li a {
+  text-decoration:none; color:rgba(255,255,255,0.65);
+  font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:13px;
+  letter-spacing:0.5px; padding:7px 15px; border-radius:var(--radius-sm);
+  transition:var(--transition); text-transform:uppercase;
+}
+.nav-links li a:hover { color:var(--yellow); background:rgba(255,208,0,0.08); }
+.nav-links li a.active { color:var(--yellow); background:rgba(255,208,0,0.12); }
+.nav-apply a { background:var(--yellow) !important; color:var(--black) !important; font-weight:700; }
+.nav-apply a:hover { background:var(--yellow-deep) !important; }
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+.hamburger span { width:24px; height:2px; background:var(--yellow); border-radius:2px; transition:0.3s; display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display:none; flex-direction:column;
+  position:fixed; top:68px; left:0; right:0;
+  background:var(--black-soft); padding:20px; z-index:999;
+  border-bottom:2px solid var(--yellow);
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  text-decoration:none; padding:13px 16px;
+  color:rgba(255,255,255,0.8); font-family:'Space Grotesk',sans-serif;
+  font-weight:500; border-radius:var(--radius-sm); margin-bottom:4px; font-size:15px; transition:0.2s;
+}
+.mobile-menu a:hover { background:rgba(255,208,0,0.1); color:var(--yellow); }
+
+/* PAGE HERO */
+.page-hero {
+  background: var(--black);
+  padding: 80px 56px 70px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content:''; position:absolute;
+  top:-150px; right:-150px; width:500px; height:500px;
+  background:radial-gradient(circle, rgba(255,208,0,0.07) 0%, transparent 70%);
+  pointer-events:none;
+}
+.page-hero-grid {
+  position:absolute; inset:0;
+  background-image: linear-gradient(rgba(255,208,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,208,0,0.03) 1px, transparent 1px);
+  background-size:60px 60px; pointer-events:none;
+}
+.page-hero-inner {
+  max-width:1100px; margin:auto; position:relative; z-index:2;
+  display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap;
+}
+.page-hero-label {
+  font-family:'Space Grotesk',sans-serif; font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:2px; color:var(--yellow);
+  display:flex; align-items:center; gap:8px; margin-bottom:14px;
+}
+.page-hero-label::before { content:''; width:20px; height:2px; background:var(--yellow); }
+.page-hero h1 {
+  font-family:'Bebas Neue',sans-serif; font-size:72px; line-height:0.95;
+  color:var(--white); letter-spacing:1px;
+}
+.page-hero h1 span { color:var(--yellow); }
+.page-hero-desc {
+  color:rgba(255,255,255,0.45); font-size:14px; font-weight:300;
+  max-width:280px; text-align:right; line-height:1.8;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+  background:var(--yellow); padding:14px 56px;
+  display:flex; align-items:center; gap:8px;
+  font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:600;
+  text-transform:uppercase; letter-spacing:1px;
+}
+.breadcrumb a { text-decoration:none; color:rgba(0,0,0,0.5); transition:0.2s; }
+.breadcrumb a:hover { color:var(--black); }
+.breadcrumb i { font-size:9px; color:rgba(0,0,0,0.4); }
+.breadcrumb span { color:var(--black); }
+
+/* MAIN CONTENT */
+.main {
+  max-width:1100px; margin:auto; padding:80px 56px;
+  display:grid; grid-template-columns:2fr 1fr; gap:64px; align-items:start;
+}
+
+/* LEFT COLUMN */
+.content-left {}
+
+.section-block {
+  margin-bottom:56px;
+  animation: fadeUp 0.7s var(--ease) both;
+}
+.section-block:nth-child(1) { animation-delay: 0.05s; }
+.section-block:nth-child(2) { animation-delay: 0.15s; }
+.section-block:nth-child(3) { animation-delay: 0.25s; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+.block-label {
+  font-family:'Space Grotesk',sans-serif; font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:2px; color:var(--yellow-deep);
+  display:flex; align-items:center; gap:8px; margin-bottom:14px;
+}
+.block-label::before { content:''; width:16px; height:2px; background:var(--yellow-deep); }
+
+.section-block h2 {
+  font-family:'Bebas Neue',sans-serif; font-size:40px; letter-spacing:0.5px;
+  line-height:1; margin-bottom:18px; color:var(--black);
+}
+
+.section-block p {
+  font-size:15px; color:var(--gray-600); font-weight:300; line-height:1.85;
+}
+
+/* LIST CARDS */
+.list-cards {
+  display:flex; flex-direction:column; gap:12px; margin-top:6px;
+}
+
+.list-card {
+  display:flex; gap:16px; align-items:flex-start;
+  background:var(--gray-100); border:1px solid transparent;
+  padding:18px 20px; border-radius:var(--radius-sm);
+  transition:var(--transition);
+}
+
+.list-card:hover {
+  background:var(--yellow-pale);
+  border-color:rgba(255,208,0,0.4);
+  transform:translateX(6px);
+}
+
+.list-card-icon {
+  width:34px; height:34px; flex-shrink:0;
+  background:var(--yellow-glow);
+  border-radius:var(--radius-sm);
+  display:flex; align-items:center; justify-content:center;
+}
+.list-card-icon i { font-size:14px; color:var(--yellow-deep); }
+
+.list-card-text strong {
+  display:block; font-family:'Space Grotesk',sans-serif;
+  font-size:13px; font-weight:600; margin-bottom:3px; color:var(--black);
+}
+.list-card-text span { font-size:13px; color:var(--gray-600); font-weight:300; }
+
+/* RIGHT SIDEBAR */
+.sidebar { position:sticky; top:88px; }
+
+.sidebar-card {
+  background:var(--black); border-radius:var(--radius);
+  padding:32px 28px; margin-bottom:20px;
+  border:1px solid rgba(255,208,0,0.1);
+  animation: fadeUp 0.7s var(--ease) 0.3s both;
+}
+
+.sidebar-card h3 {
+  font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:0.5px;
+  color:var(--yellow); margin-bottom:20px;
+}
+
+.sidebar-stat {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.sidebar-stat:last-child { border-bottom:none; padding-bottom:0; }
+.sidebar-stat span { font-size:12px; color:rgba(255,255,255,0.4); font-family:'Space Grotesk',sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:0.5px; }
+.sidebar-stat strong { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--white); letter-spacing:1px; }
+
+.sidebar-cta {
+  background:var(--yellow); border-radius:var(--radius);
+  padding:28px 24px; text-align:center;
+  animation: fadeUp 0.7s var(--ease) 0.45s both;
+}
+.sidebar-cta h4 {
+  font-family:'Bebas Neue',sans-serif; font-size:28px;
+  color:var(--black); margin-bottom:10px; letter-spacing:0.5px;
+}
+.sidebar-cta p { font-size:13px; color:rgba(0,0,0,0.55); font-weight:300; margin-bottom:20px; line-height:1.6; }
+.btn-dark {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:12px 22px; background:var(--black); color:var(--yellow);
+  text-decoration:none; font-weight:700; border-radius:var(--radius-sm);
+  transition:var(--transition); font-family:'Space Grotesk',sans-serif;
+  font-size:13px; width:100%; justify-content:center;
+}
+.btn-dark:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.25); }
+
+.contact-list { list-style:none; margin-top:6px; }
+.contact-list li {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+  font-size:13px; color:rgba(255,255,255,0.5); font-weight:300;
+}
+.contact-list li:last-child { border:none; }
+.contact-list li i { color:var(--yellow); font-size:13px; width:16px; }
+.contact-list li a { color:rgba(255,255,255,0.5); text-decoration:none; transition:0.2s; }
+.contact-list li a:hover { color:var(--yellow); }
+
+/* BACK BTN */
+.back-row {
+  max-width:1100px; margin:0 auto; padding:0 56px 60px;
+}
+.btn-back {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:13px 24px; background:var(--black); color:var(--yellow);
+  text-decoration:none; font-weight:700; border-radius:var(--radius-sm);
+  transition:var(--transition); font-family:'Space Grotesk',sans-serif; font-size:13px;
+}
+.btn-back:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.15); }
+
+/* FOOTER */
+footer { background:#080808; color:rgba(255,255,255,0.35); padding:50px 56px 28px; border-top:1px solid rgba(255,208,0,0.1); }
+.footer-inner { display:grid; grid-template-columns:2fr 1fr 1fr; gap:60px; margin-bottom:40px; }
+.footer-brand .logo { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--yellow); letter-spacing:2px; margin-bottom:12px; display:block; }
+.footer-brand p { font-size:13px; font-weight:300; line-height:1.8; max-width:260px; }
+.footer-links h4 { color:rgba(255,255,255,0.75); font-family:'Space Grotesk',sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:18px; }
+.footer-links a { display:block; color:rgba(255,255,255,0.35); text-decoration:none; margin-bottom:10px; font-size:13px; font-weight:300; transition:0.2s; }
+.footer-links a:hover { color:var(--yellow); padding-left:4px; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.06); padding-top:22px; display:flex; justify-content:space-between; font-size:12px; flex-wrap:wrap; gap:8px; }
+.footer-bottom span { color:rgba(255,208,0,0.4); }
+
+/* RESPONSIVE */
+@media(max-width:900px) {
+  .main { grid-template-columns:1fr; padding:60px 24px; }
+  .sidebar { position:static; }
+  .page-hero { padding:60px 24px 50px; }
+  .page-hero h1 { font-size:50px; }
+  .page-hero-desc { text-align:left; }
+  .breadcrumb { padding:14px 24px; }
+  .back-row { padding:0 24px 48px; }
+  .footer-inner { grid-template-columns:1fr; gap:32px; }
+  footer { padding:40px 24px 22px; }
+}
+@media(max-width:768px) {
+  nav { padding:0 20px; }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="martha.html" class="nav-logo">ABC CO <span>MIS</span></a>
+  <ul class="nav-links">
+    <li><a href="martha.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="nav-apply"><a href="apply.html">Apply Now</a></li>
+    <li><a href="product.html">Product</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="martha.html">🏠 Home</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="login.html">🔐 Login</a>
+  <a href="contact.html">📞 Contact</a>
+  <a href="apply.html">🚀 Apply Now</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div>
+   
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="martha.html">Home</a>
+  <i class="fa-solid fa-chevron-right"></i>
+  <span>About</span>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- LEFT -->
+  <div class="content-left">
+
+    <!-- About -->
+    <div class="section-block">
+      <div class="block-label">Who We Are</div>
+      <h2>About ABC CO</h2>
+      <p>ABC CO is an NGO located in Gasabo District, Kigali, Rwanda. Our mission is to promote education — especially in TVET schools — through innovation, technology, and practical skills development. We believe every student has the potential to create solutions that matter.</p>
+    </div>
+
+    <!-- Mission -->
+    <div class="section-block">
+      <div class="block-label">Our Purpose</div>
+      <h2>Our Mission</h2>
+      <p>To support TVET students in developing innovative projects that solve real-life problems and sharpen their skills in technology, entrepreneurship, and creativity.</p>
+    </div>
+
+    <!-- What System Does -->
+    <div class="section-block">
+      <div class="block-label">The Platform</div>
+      <h2>What This System Does</h2>
+      <div class="list-cards">
+        <div class="list-card">
+          <div class="list-card-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+          <div class="list-card-text">
+            <strong>Online Applications</strong>
+            <span>Students apply for innovation competitions entirely online — no paperwork needed.</span>
+          </div>
+        </div>
+        <div class="list-card">
+          <div class="list-card-icon"><i class="fa-solid fa-table-list"></i></div>
+          <div class="list-card-text">
+            <strong>Admin Management</strong>
+            <span>Administrators review, filter, and manage applications from one dashboard.</span>
+          </div>
+        </div>
+        <div class="list-card">
+          <div class="list-card-icon"><i class="fa-solid fa-bell"></i></div>
+          <div class="list-card-text">
+            <strong>Real-Time Feedback</strong>
+            <span>Applicants receive live status updates and results as decisions are made.</span>
+          </div>
+        </div>
+        <div class="list-card">
+          <div class="list-card-icon"><i class="fa-solid fa-comments"></i></div>
+          <div class="list-card-text">
+            <strong>Improved Communication</strong>
+            <span>Seamless messaging between students, schools, and organizers throughout the process.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="section-block">
+      <div class="block-label">Why It Matters</div>
+      <h2>Benefits</h2>
+      <div class="list-cards">
+        <div class="list-card">
+          <div class="list-card-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="list-card-text">
+            <strong>Fast & Easy</strong>
+            <span>Simple application process that takes minutes, not days.</span>
+          </div>
+        </div>
+        <div class="list-card">
+          <div class="list-card-icon"><i class="fa-solid fa-eye"></i></div>
+          <div class="list-card-text">
+            <strong>Transparent Selection</strong>
+            <span>Fair, clear, and trackable evaluation for every submission.</span>
+          </div>
+        </div>
+        <div class="list-card">
+          <div class="list-card-icon"><i class="fa-solid fa-file-circle-xmark"></i></div>
+          <div class="list-card-text">
+            <strong>Paperless</strong>
+            <span>100% digital — no printing, no physical forms, no wasted time.</span>
+          </div>
+        </div>
+        <div class="list-card">
+          <div class="list-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="list-card-text">
+            <strong>Better Organization</strong>
+            <span>Projects are tracked, categorized, and managed with ease.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <h3>Our Numbers</h3>
+      <div class="sidebar-stat"><span>Projects</span><strong>200+</strong></div>
+      <div class="sidebar-stat"><span>Schools</span><strong>50+</strong></div>
+      <div class="sidebar-stat"><span>Districts</span><strong>30+</strong></div>
+      <div class="sidebar-stat"><span>Years Active</span><strong>5+</strong></div>
+    </div>
+
+    <div class="sidebar-cta">
+      <h4>Ready to Join?</h4>
+      <p>Submit your project and get recognized on a national stage.</p>
+      <a href="apply.html" class="btn-dark">
+        Apply Now <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="sidebar-card" style="margin-top:20px;">
+      <h3>Contact Us</h3>
+      <ul class="contact-list">
+        <li><i class="fa-solid fa-location-dot"></i> Gasabo, Kigali, Rwanda</li>
+        <li><i class="fa-solid fa-envelope"></i><a href="mailto:marthabera3@gmail.com">marthabera3@gmail.com</a></li>
+        <li><i class="fa-solid fa-phone"></i><a href="tel:+250796705936">+250 796 705 936</a></li>
+      </ul>
+    </div>
+
+  </aside>
+</div>
+
+<!-- BACK -->
+<div class="back-row">
+  <a href="martha.html" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i> Back to Home
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo">ABC CO MIS</span>
+      <p>Promoting innovation and practical education in TVET schools across Rwanda since 2021.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Pages</h4>
+      <a href="martha.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="login.html">Login</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="#">📍 Kigali, Rwanda</a>
+      <a href="mailto:marthabera3@gmail.com">📧 marthabera3@gmail.com</a>
+      <a href="tel:+250796705936">📞 +250 796 705 936</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ABC CO Rwanda — All rights reserved</span>
+    <span>Built with ❤️ in Kigali</span>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MINEDUC Rwanda</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f5f5f5;
+}
+
+
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+}
+
+
+
+
+.hero h1{
+    font-size:60px;
+}
+
+.hero span{
+    color:#ffd700;
+}
+
+/* BUTTON */
+.btn{
+    padding:12px 25px;
+    background:#ffd700;
+    color:black;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* SECTION */
+.section{
+    padding:80px 8%;
+    text-align:center;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    margin:15px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    display:inline-block;
+    width:250px;
+}
+
+.back-home{
+   position: fixed;
+   top: 90px;
+   left: 20px;
+   background:#009639;
+   color:white;
+   padding:10px 15px;
+   border-radius:8px;
+   text-decoration:none;
+   font-weight:600;
+   z-index:999;
+}
+
+.back-home:hover{
+   background:#007a2a;
+}
+footer{
+    background:black;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:35px;
+    }
+
+    nav{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<a href="martha.html" class="back-home">
+   ⬅ Back Home
+</a>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+    <h2>About MINEDUC</h2>
+    <p>
+        MINEDUC is responsible for education policy and development in Rwanda.
+    </p>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+    <h2>Our Services</h2>
+
+    <div class="card">Education Policy</div>
+    <div class="card">School Development</div>
+    <div class="card">Teacher Training</div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+    <h2>Contact</h2>
+    <p>Email: info@mineduc.gov.rw</p>
+    <p>Hotline: 2028</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 MINEDUC Rwanda</p>
+</footer>
+
+</body>
+</html>

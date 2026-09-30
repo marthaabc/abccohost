@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>National Reach</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f9b0f,#38ef7d);
+}
+
+/* CARD */
+.card{
+width:350px;
+background:white;
+padding:35px 25px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+/* ICON */
+.icon{
+width:90px;
+height:90px;
+background:#e8f9ee;
+margin:auto;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:20px;
+}
+
+.icon i{
+font-size:45px;
+color:green;
+}
+
+/* TEXT */
+.card h2{
+font-size:32px;
+color:#006400;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:18px;
+color:#555;
+line-height:1.6;
+margin-bottom:25px;
+}
+
+/* BUTTON */
+button{
+background:#006400;
+color:white;
+border:none;
+padding:12px 25px;
+font-size:17px;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:green;
+transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="icon">
+<i class="fa-solid fa-school"></i>
+</div>
+
+<h2>National Reach</h2>
+
+<p>
+50+ partner schools across Rwanda
+working together to improve education
+and innovation.
+</p>
+
+<button onclick="message()">
+Learn More
+</button>
+<a href="martha.html">
+<button >back home</button>
+</div>
+</a>
+<script>
+
+function message(){
+alert("Welcome to National Reach Program!");
+}
+
+</script>
+
+</body>
+</html>

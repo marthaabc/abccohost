@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC CO MIS | Rwanda TVET Innovation</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --yellow:        #F5C518;
+  --yellow-mid:    #E6B800;
+  --yellow-light:  #FFD700;
+  --yellow-pale:   #FFF9E0;
+  --yellow-glow:   rgba(245,197,24,0.18);
+  --yellow-border: rgba(245,197,24,0.3);
+  --black:         #0A0A00;
+  --black-soft:    #111100;
+  --white:         #FFFDF0;
+  --off-white:     #FFFBE8;
+  --gray-100:      #F5F0D8;
+  --gray-400:      #9A9070;
+  --gray-600:      #5A5240;
+  --shadow-y:      0 8px 32px rgba(50,40,0,0.18);
+  --shadow-y-lg:   0 20px 60px rgba(50,40,0,0.28);
+  --radius-sm:     8px;
+  --radius:        16px;
+  --radius-lg:     28px;
+  --ease:          cubic-bezier(0.22, 1, 0.36, 1);
+  --transition:    0.4s var(--ease);
+  --fs-hero:       clamp(52px, 7vw, 82px);
+  --fs-section:    clamp(36px, 4.5vw, 56px);
+  --fs-about-h2:   clamp(40px, 5vw, 62px);
+  --fs-cta-h2:     clamp(36px, 5vw, 66px);
+  --fs-nav:        13.5px;
+  --fs-badge:      11.5px;
+  --fs-body-lg:    16.5px;
+  --fs-body:       15px;
+  --fs-body-sm:    13.5px;
+  --fs-label:      11px;
+  --fs-stat:       clamp(38px, 4vw, 52px);
+  --fs-feature-h:  18px;
+  --fs-feature-p:  14.5px;
+  --lh-hero:    1.0;
+  --lh-heading: 1.08;
+  --lh-body:    1.75;
+  --lh-relaxed: 1.9;
+  --ls-hero:   -1px;
+  --ls-tight:  -0.4px;
+  --ls-normal: 0.2px;
+  --ls-wide:   1.5px;
+  --ls-wider:  2px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: 0.5;
+}
+/* LOGO IMAGE */
+.logo-img{
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  display: block;
+}
+
+/* niba ushaka ko iba muri navbar neza */
+.logo-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+/* NAVBAR */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 56px; background: var(--black);
+  position: sticky; top: 0; z-index: 1000;
+  height: 68px; border-bottom: 1px solid rgba(245,197,24,0.2);
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif; font-size: 21px; font-weight: 800;
+  letter-spacing: 1.2px; text-decoration: none; color: var(--yellow);
+}
+.nav-logo span { color: rgba(255,255,255,0.22); }
+.nav-links { display: flex; gap: 2px; list-style: none; align-items: center; }
+.nav-links li a {
+  text-decoration: none; color: rgba(255,255,255,0.55);
+  font-family: 'Outfit', sans-serif; font-weight: 500; font-size: var(--fs-nav);
+  letter-spacing: var(--ls-wide); padding: 7px 15px; border-radius: var(--radius-sm);
+  transition: var(--transition); text-transform: uppercase;
+}
+.nav-links li a:hover { color: var(--yellow); background: var(--yellow-glow); }
+.nav-links li a.active { color: var(--yellow); background: var(--yellow-glow); }
+.nav-apply a { background: var(--yellow) !important; color: #000 !important; font-weight: 700; border-radius: var(--radius-sm); }
+.nav-apply a:hover { background: var(--yellow-mid) !important; transform: translateY(-1px); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { width: 24px; height: 2px; background: var(--yellow); border-radius: 2px; transition: 0.3s; display: block; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0;
+  background: var(--black-soft); padding: 20px; z-index: 999;
+  border-bottom: 2px solid var(--yellow-mid);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  text-decoration: none; padding: 13px 16px; color: rgba(255,255,255,0.75);
+  font-family: 'Outfit', sans-serif; font-weight: 500; border-radius: var(--radius-sm);
+  margin-bottom: 4px; font-size: var(--fs-body); transition: 0.2s;
+}
+.mobile-menu a:hover { background: var(--yellow-glow); color: var(--yellow); }
+
+/* HERO */
+.hero {
+  min-height: 92vh; display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; position: relative; overflow: hidden;
+  background: var(--black);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 65% at 72% 50%, var(--yellow-glow) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 45% at 18% 80%, var(--yellow-glow) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-grid-lines {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(245,197,24,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,197,24,0.04) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.hero-stripe {
+  position: absolute; top: -120px; right: 38%; width: 3px; height: 160%;
+  background: linear-gradient(180deg, transparent, var(--yellow-border), transparent);
+  transform: rotate(-15deg); pointer-events: none;
+}
+.hero-left { padding: 80px 56px; position: relative; z-index: 2; animation: heroLeft 1s var(--ease) both; }
+@keyframes heroLeft { from{opacity:0;transform:translateX(-40px)} to{opacity:1;transform:translateX(0)} }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow-glow); border: 1px solid var(--yellow-border); color: var(--yellow);
+  padding: 8px 18px; border-radius: 50px; font-size: var(--fs-badge); font-weight: 600;
+  margin-bottom: 36px; font-family: 'Syne', sans-serif;
+  letter-spacing: var(--ls-wide); text-transform: uppercase;
+}
+.hero-badge::before {
+  content: ''; width: 7px; height: 7px; background: var(--yellow);
+  border-radius: 50%; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+.hero h1 {
+  font-family: 'Syne', sans-serif; font-size: var(--fs-hero); font-weight: 800;
+  line-height: var(--lh-hero); color: #ffffff; margin-bottom: 28px;
+  letter-spacing: var(--ls-hero);
+}
+.hero h1 .accent { color: var(--yellow); display: block; margin-top: 4px; }
+.hero-desc {
+  font-size: var(--fs-body-lg); color: rgba(255,255,255,0.6); margin-bottom: 48px;
+  max-width: 420px; font-weight: 400; line-height: var(--lh-relaxed);
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px;
+  background: var(--yellow); color: #000; text-decoration: none; font-weight: 700;
+  border-radius: var(--radius-sm); transition: var(--transition);
+  font-family: 'Syne', sans-serif; font-size: 14.5px; border: 1.5px solid transparent;
+}
+.btn-primary:hover { transform: translateY(-3px); background: var(--yellow-mid); box-shadow: 0 12px 30px var(--yellow-glow); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px;
+  background: transparent; border: 1.5px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.72); text-decoration: none; font-weight: 500;
+  border-radius: var(--radius-sm); transition: var(--transition);
+  font-family: 'Syne', sans-serif; font-size: 14.5px;
+}
+.btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); background: var(--yellow-glow); }
+.hero-right {
+  position: relative; height: 100%; min-height: 92vh; z-index: 1; overflow: hidden;
+  animation: heroRight 1.2s var(--ease) 0.2s both;
+}
+@keyframes heroRight { from{opacity:0;transform:scale(1.06)} to{opacity:1;transform:scale(1)} }
+.hero-right img { width: 100%; height: 100%; object-fit: cover; opacity: 0.35; filter: grayscale(20%) saturate(0.7); }
+.hero-right::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, var(--black) 0%, transparent 55%); }
+.hero-right::before { content:''; position:absolute; inset:0; background:linear-gradient(0deg, var(--black) 0%, transparent 40%); z-index:1; }
+.hero-right .tint { position:absolute; inset:0; background:var(--yellow-glow); z-index:2; mix-blend-mode:multiply; }
+
+/* STATS BAR */
+.stats-bar { background: var(--yellow); display: flex; flex-wrap: wrap; }
+.stat-item { flex:1; min-width:180px; padding:36px 24px; text-align:center; border-right:1px solid rgba(0,0,0,0.12); transition:var(--transition); }
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(0,0,0,0.08); }
+.stat-item h3 { font-family:'Syne',sans-serif; font-size:var(--fs-stat); font-weight:800; color:#000; line-height:1; letter-spacing:-1px; }
+.stat-item p { font-family:'Outfit',sans-serif; font-size:var(--fs-label); font-weight:600; text-transform:uppercase; letter-spacing:var(--ls-wide); color:rgba(0,0,0,0.55); margin-top:8px; }
+
+/* COUNTDOWN */
+.countdown-section {
+  background: var(--black-soft); padding: 60px 56px;
+  border-bottom: 1px solid var(--yellow-border);
+}
+.countdown-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1000px; margin: auto; gap: 40px; flex-wrap: wrap;
+}
+.countdown-text { flex: 1; min-width: 220px; }
+.countdown-text .section-label { color: var(--yellow); }
+.countdown-text .section-label::before { background: var(--yellow); }
+.countdown-text h3 {
+  font-family: 'Syne', sans-serif; font-size: clamp(24px, 3vw, 36px);
+  font-weight: 800; color: var(--white); letter-spacing: var(--ls-tight); margin-top: 8px;
+}
+.countdown-boxes { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.countdown-box {
+  background: var(--yellow-glow); border: 1px solid var(--yellow-border);
+  border-radius: var(--radius); padding: 20px 28px; text-align: center;
+  min-width: 90px; transition: var(--transition);
+}
+.countdown-box:hover { background: var(--yellow); border-color: var(--yellow-mid); transform: translateY(-4px); }
+.countdown-box:hover .cd-num { color: #000; }
+.countdown-box:hover .cd-label { color: rgba(0,0,0,0.55); }
+.countdown-box .cd-num {
+  font-family: 'Syne', sans-serif; font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800; color: var(--yellow); line-height: 1; display: block;
+}
+.countdown-box .cd-label {
+  font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--ls-wide);
+  color: rgba(255,255,255,0.4); margin-top: 6px; display: block;
+}
+
+/* FEATURES */
+.features { padding: 100px 56px; background: var(--white); }
+.section-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:56px; gap:24px; flex-wrap:wrap; }
+.section-label {
+  font-family:'Syne',sans-serif; font-size:var(--fs-label); font-weight:700;
+  text-transform:uppercase; letter-spacing:var(--ls-wider); color:var(--yellow-mid); margin-bottom:14px;
+  display:flex; align-items:center; gap:10px;
+}
+.section-label::before { content:''; width:22px; height:2.5px; background:var(--yellow-mid); border-radius:2px; }
+.section-title { font-family:'Syne',sans-serif; font-size:var(--fs-section); font-weight:800; line-height:var(--lh-heading); letter-spacing:var(--ls-tight); }
+.section-sub { color:var(--gray-400); font-size:var(--fs-body-sm); max-width:260px; text-align:right; font-weight:400; line-height:var(--lh-body); }
+.features-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.feature-box {
+  background:var(--gray-100); padding:36px 28px; border-radius:var(--radius);
+  transition:var(--transition); position:relative; overflow:hidden;
+  text-decoration:none; color:inherit; display:block; border:1px solid transparent;
+}
+.feature-box::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--yellow); transform:scaleX(0); transform-origin:left; transition:var(--transition); }
+.feature-box:hover { background:var(--black); color:var(--white); transform:translateY(-8px); box-shadow:var(--shadow-y-lg); border-color:var(--yellow-border); }
+.feature-box:hover::before { transform:scaleX(1); }
+.feature-box:hover .feature-icon { background:var(--yellow); }
+.feature-box:hover .feature-icon i { color:#000; }
+.feature-box:hover p { color:rgba(255,255,255,0.52); }
+.feature-num { font-family:'Syne',sans-serif; font-size:12px; letter-spacing:var(--ls-wider); color:var(--gray-400); margin-bottom:24px; display:block; }
+.feature-icon { width:56px; height:56px; background:var(--yellow-pale); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; margin-bottom:20px; transition:var(--transition); }
+.feature-icon i { font-size:22px; color:var(--yellow-mid); transition:var(--transition); }
+.feature-box h3 { font-family:'Syne',sans-serif; font-size:var(--fs-feature-h); font-weight:700; margin-bottom:10px; letter-spacing:var(--ls-tight); line-height:1.25; }
+.feature-box p { color:var(--gray-600); font-size:var(--fs-feature-p); line-height:var(--lh-body); font-weight:400; transition:color 0.3s; }
+
+/* ABOUT */
+.about { padding:100px 56px; background:var(--black); position:relative; overflow:hidden; }
+.about::before { content:''; position:absolute; top:-180px; right:-180px; width:580px; height:580px; background:radial-gradient(circle, var(--yellow-glow) 0%, transparent 70%); pointer-events:none; }
+.about::after { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:linear-gradient(180deg, transparent, var(--yellow-border), transparent); pointer-events:none; }
+.about-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; max-width:1100px; margin:auto; align-items:center; position:relative; z-index:2; }
+.about .section-label { color:var(--yellow); }
+.about .section-label::before { background:var(--yellow); }
+.about-text h2 { font-family:'Syne',sans-serif; font-size:var(--fs-about-h2); font-weight:800; line-height:var(--lh-heading); color:var(--white); letter-spacing:var(--ls-tight); margin-bottom:28px; }
+.about-text h2 span { color:var(--yellow); }
+.about-text p { color:rgba(255,255,255,0.48); margin-bottom:40px; font-size:var(--fs-body); line-height:var(--lh-relaxed); }
+.about-highlights { display:flex; flex-direction:column; gap:16px; }
+.highlight-item { display:flex; gap:16px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); padding:20px 22px; border-radius:var(--radius-sm); text-decoration:none; transition:var(--transition); align-items:flex-start; }
+.highlight-item:hover { background:var(--yellow-glow); border-color:var(--yellow-border); transform:translateX(6px); }
+.highlight-item .hi-icon { width:38px; height:38px; background:var(--yellow-glow); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.highlight-item .hi-icon i { color:var(--yellow); font-size:15px; }
+.highlight-item strong { color:var(--white); font-family:'Syne',sans-serif; font-size:14.5px; font-weight:700; display:block; margin-bottom:5px; }
+.highlight-item span { color:rgba(255,255,255,0.4); font-size:var(--fs-body-sm); line-height:1.65; }
+
+/* GALLERY */
+.gallery { padding: 100px 56px; background: var(--off-white); }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 16px; margin-top: 56px; }
+.gallery-item { position: relative; overflow: hidden; border-radius: var(--radius); cursor: pointer; aspect-ratio: 4/3; transition: var(--transition); }
+.gallery-item:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.gallery-item:hover img { transform: scale(1.07); }
+.gallery-item .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.75) 100%); opacity: 0; transition: opacity 0.4s; display: flex; align-items: flex-end; padding: 20px; }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay span { color: #fff; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: var(--ls-tight); }
+.gallery-tag { position: absolute; top: 12px; left: 12px; background: var(--yellow); color: #000; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: var(--ls-wide); padding: 4px 10px; border-radius: 4px; font-family: 'Syne', sans-serif; }
+
+/* TESTIMONIALS */
+.testimonials { padding: 100px 56px; background: var(--black); position: relative; overflow: hidden; }
+.testimonials::before { content:''; position:absolute; bottom:-200px; left:-200px; width:500px; height:500px; background:radial-gradient(circle, var(--yellow-glow) 0%, transparent 70%); pointer-events:none; }
+.testimonials .section-label { color: var(--yellow); }
+.testimonials .section-label::before { background: var(--yellow); }
+.testimonials .section-title { color: var(--white); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+.testimonial-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); padding: 32px 28px; border-radius: var(--radius); transition: var(--transition); position: relative; }
+.testimonial-card:hover { background: var(--yellow-glow); border-color: var(--yellow-border); transform: translateY(-6px); }
+.testimonial-card::before { content: '\201C'; position: absolute; top: 16px; right: 20px; font-size: 80px; line-height: 1; font-family: Georgia, serif; color: var(--yellow); opacity: 0.2; font-weight: 900; }
+.testimonial-stars { display: flex; gap: 4px; margin-bottom: 16px; }
+.testimonial-stars i { color: var(--yellow); font-size: 14px; }
+.testimonial-card p { color: rgba(255,255,255,0.55); font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); margin-bottom: 24px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; color: #000; flex-shrink: 0; }
+.testimonial-author strong { display: block; color: var(--white); font-family: 'Syne', sans-serif; font-size: 13.5px; font-weight: 700; }
+.testimonial-author span { color: rgba(255,255,255,0.35); font-size: 12px; }
+
+/* NEWS */
+.news { padding: 100px 56px; background: var(--white); }
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.news-card { background: var(--gray-100); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; display: block; border: 1px solid transparent; transition: var(--transition); }
+.news-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-y-lg); border-color: var(--yellow-border); }
+.news-card-img { height: 180px; overflow: hidden; position: relative; }
+.news-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+.news-card:hover .news-card-img img { transform: scale(1.06); }
+.news-cat { position: absolute; top: 12px; left: 12px; background: var(--yellow); color: #000; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: var(--ls-wide); padding: 4px 10px; border-radius: 4px; font-family: 'Syne', sans-serif; }
+.news-body { padding: 24px 22px; }
+.news-date { font-size: 11px; color: var(--gray-400); font-weight: 600; text-transform: uppercase; letter-spacing: var(--ls-wide); margin-bottom: 10px; display: block; }
+.news-body h4 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: var(--ls-tight); margin-bottom: 10px; line-height: 1.35; }
+.news-body p { font-size: var(--fs-body-sm); color: var(--gray-600); line-height: var(--lh-body); }
+.news-read { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 12px; font-weight: 700; color: var(--yellow-mid); font-family: 'Syne', sans-serif; text-transform: uppercase; letter-spacing: var(--ls-wide); transition: gap 0.3s; }
+.news-card:hover .news-read { gap: 10px; }
+
+/* PARTNERS */
+.partners { padding: 80px 56px; background: var(--gray-100); border-top: 1px solid var(--yellow-border); border-bottom: 1px solid var(--yellow-border); }
+.partners-inner { max-width: 1000px; margin: auto; }
+.partners-label { text-align: center; font-family: 'Syne', sans-serif; font-size: var(--fs-label); font-weight: 700; text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--gray-400); margin-bottom: 44px; }
+.partners-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; }
+.partner-logo { background: var(--white); border: 1px solid var(--yellow-border); border-radius: var(--radius-sm); padding: 16px 28px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; color: var(--gray-400); letter-spacing: 1px; transition: var(--transition); display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.partner-logo i { font-size: 20px; color: var(--yellow-mid); }
+.partner-logo:hover { color: var(--black); border-color: var(--yellow); background: var(--yellow-pale); transform: translateY(-3px); box-shadow: var(--shadow-y); }
+
+/* FAQ */
+.faq { padding: 100px 56px; background: var(--off-white); }
+.faq-inner { max-width: 780px; margin: auto; }
+.faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { background: var(--white); border: 1px solid var(--yellow-border); border-radius: var(--radius-sm); overflow: hidden; transition: var(--transition); }
+.faq-item.open { border-color: var(--yellow-mid); }
+.faq-question { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: var(--ls-tight); transition: background 0.3s; gap: 16px; }
+.faq-question:hover { background: var(--yellow-pale); }
+.faq-item.open .faq-question { background: var(--yellow-pale); color: var(--yellow-mid); }
+.faq-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--yellow-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: var(--transition); }
+.faq-item.open .faq-icon { background: var(--yellow); transform: rotate(45deg); }
+.faq-icon i { font-size: 14px; color: var(--yellow-mid); transition: color 0.3s; }
+.faq-item.open .faq-icon i { color: #000; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.4s; font-size: var(--fs-body-sm); color: var(--gray-600); line-height: var(--lh-relaxed); padding: 0 24px; }
+.faq-item.open .faq-answer { max-height: 300px; padding: 4px 24px 20px; }
+
+/* TIMELINE */
+.timeline { padding: 100px 56px; background: var(--white); }
+.timeline-track {
+  position: relative; margin-top: 56px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.timeline-track::before {
+  content: ''; position: absolute; top: 28px; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--yellow) 40%, var(--yellow-border) 100%);
+  z-index: 0;
+}
+.timeline-step {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  position: relative; z-index: 1; padding: 0 8px;
+}
+.tl-dot {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--white); border: 3px solid var(--yellow-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--gray-400); margin-bottom: 20px;
+  transition: var(--transition); position: relative;
+  box-shadow: 0 0 0 6px var(--white);
+}
+.timeline-step.done .tl-dot { background: var(--yellow-pale); border-color: var(--yellow); color: var(--yellow-mid); }
+.timeline-step.active .tl-dot { background: var(--yellow); border-color: var(--yellow); color: #000; box-shadow: 0 0 0 6px var(--yellow-pale), 0 8px 24px var(--yellow-glow); }
+.tl-check {
+  position: absolute; top: -5px; right: -5px; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--yellow); display: none;
+  align-items: center; justify-content: center;
+}
+.tl-check i { font-size: 10px; color: #000; }
+.timeline-step.done .tl-check { display: flex; }
+.tl-badge {
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: var(--ls-wide);
+  padding: 3px 10px; border-radius: 20px; margin-bottom: 8px;
+  background: var(--yellow-pale); color: var(--yellow-mid);
+}
+.timeline-step.active .tl-badge { background: var(--yellow); color: #000; }
+.timeline-step.done .tl-badge { background: var(--gray-100); color: var(--gray-400); }
+.tl-title {
+  font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+  text-align: center; color: var(--black); margin-bottom: 5px;
+  letter-spacing: var(--ls-tight);
+}
+.timeline-step.active .tl-title { color: var(--yellow-mid); }
+.timeline-step.done .tl-title { color: var(--gray-400); }
+.tl-date { font-size: 11.5px; color: var(--gray-400); text-align: center; font-weight: 500; }
+
+/* NEWSLETTER */
+.newsletter {
+  padding: 88px 56px;
+  background: var(--black-soft);
+  border-top: 1px solid var(--yellow-border);
+  border-bottom: 1px solid var(--yellow-border);
+  position: relative; overflow: hidden;
+}
+.newsletter::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(245,197,24,0.06) 1px, transparent 1px);
+  background-size: 32px 32px; pointer-events: none;
+}
+.newsletter-inner { max-width: 640px; margin: auto; text-align: center; position: relative; z-index: 2; }
+.newsletter .section-label { justify-content: center; color: var(--yellow); }
+.newsletter .section-label::before { background: var(--yellow); }
+.newsletter h2 {
+  font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800; color: var(--white); letter-spacing: var(--ls-tight);
+  margin: 12px 0 14px; line-height: var(--lh-heading);
+}
+.newsletter p { color: rgba(255,255,255,0.48); font-size: var(--fs-body); line-height: var(--lh-body); margin-bottom: 36px; }
+.newsletter-form { display: flex; gap: 10px; max-width: 480px; margin: 0 auto 16px; flex-wrap: wrap; justify-content: center; }
+.newsletter-form input[type="email"] {
+  flex: 1; min-width: 220px; padding: 14px 20px;
+  background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-sm); color: var(--white);
+  font-family: 'Outfit', sans-serif; font-size: var(--fs-body);
+  outline: none; transition: border-color 0.3s;
+}
+.newsletter-form input[type="email"]::placeholder { color: rgba(255,255,255,0.28); }
+.newsletter-form input[type="email"]:focus { border-color: var(--yellow); }
+.newsletter-form button {
+  padding: 14px 26px; background: var(--yellow); color: #000;
+  border: none; border-radius: var(--radius-sm);
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px;
+  cursor: pointer; transition: var(--transition); white-space: nowrap;
+  display: flex; align-items: center; gap: 8px;
+}
+.newsletter-form button:hover { background: var(--yellow-mid); transform: translateY(-2px); }
+.newsletter-privacy {
+  font-size: 12px; color: rgba(255,255,255,0.28);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.newsletter-privacy i { color: var(--yellow); }
+.newsletter-success {
+  display: none; align-items: center; gap: 10px; justify-content: center;
+  padding: 16px 24px; background: var(--yellow-glow);
+  border: 1px solid var(--yellow-border); border-radius: var(--radius-sm);
+  color: var(--yellow); font-family: 'Syne', sans-serif; font-weight: 600; font-size: 15px;
+  margin-bottom: 16px;
+}
+.newsletter-success.show { display: flex; }
+
+/* BACK TO TOP */
+.back-to-top {
+  position: fixed; bottom: 88px; right: 28px; z-index: 1500;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--black-soft); border: 1.5px solid var(--yellow-border);
+  color: var(--yellow); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.back-to-top.visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { background: var(--yellow); border-color: var(--yellow-mid); color: #000; transform: translateY(-4px); }
+
+/* CTA */
+.cta { background:var(--yellow); padding:90px 56px; position:relative; overflow:hidden; }
+.cta::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px); background-size:28px 28px; pointer-events:none; }
+.cta-inner { display:flex; align-items:center; justify-content:space-between; max-width:1000px; margin:auto; gap:40px; flex-wrap:wrap; position:relative; z-index:2; }
+.cta-text { flex:1; min-width:280px; }
+.cta-text h2 { font-family:'Syne',sans-serif; font-size:var(--fs-cta-h2); font-weight:800; line-height:var(--lh-heading); color:#000; letter-spacing:var(--ls-tight); margin-bottom:16px; }
+.cta-text p { color:rgba(0,0,0,0.6); font-size:var(--fs-body); line-height:var(--lh-body); max-width:380px; }
+.btn-dark { display:inline-flex; align-items:center; gap:12px; padding:17px 34px; background:var(--black); color:var(--yellow); text-decoration:none; font-weight:700; border-radius:var(--radius-sm); transition:var(--transition); font-family:'Syne',sans-serif; font-size:14.5px; white-space:nowrap; border:1.5px solid transparent; }
+.btn-dark:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.3); border-color:var(--yellow-border); }
+
+/* FOOTER */
+footer { background:#060600; color:rgba(255,255,255,0.28); padding:60px 56px 30px; border-top:1px solid var(--yellow-border); }
+.footer-inner { display:grid; grid-template-columns:2fr 1fr 1fr; gap:60px; margin-bottom:48px; }
+.footer-brand .logo { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:var(--yellow); letter-spacing:1px; margin-bottom:14px; display:block; }
+.footer-brand p { font-size:var(--fs-body-sm); line-height:var(--lh-relaxed); max-width:280px; }
+.footer-links h4 { color:rgba(255,255,255,0.65); font-family:'Syne',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:var(--ls-wide); margin-bottom:20px; }
+.footer-links a { display:block; color:rgba(255,255,255,0.28); text-decoration:none; margin-bottom:10px; font-size:var(--fs-body-sm); transition:0.2s; }
+.footer-links a:hover { color:var(--yellow); padding-left:5px; }
+.footer-social { margin-top: 20px; display: flex; gap: 10px; }
+.social-btn { width: 36px; height: 36px; border-radius: var(--radius-sm); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 15px; transition: var(--transition); }
+.social-btn:hover { background: var(--yellow); border-color: var(--yellow-mid); color: #000; transform: translateY(-3px); }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.05); padding-top:24px; display:flex; justify-content:space-between; align-items:center; font-size:12px; flex-wrap:wrap; gap:8px; }
+.footer-bottom span { color:rgba(255,255,255,0.2); }
+.footer-bottom span:last-child { color:var(--yellow); opacity:0.5; }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:0.1s; }
+.reveal-delay-2 { transition-delay:0.2s; }
+.reveal-delay-3 { transition-delay:0.3s; }
+.reveal-delay-4 { transition-delay:0.4s; }
+
+/* RESPONSIVE */
+@media(max-width:1024px) {
+  .features-grid { grid-template-columns:repeat(2,1fr); }
+  .hero { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .hero-left { padding:80px 40px; text-align:center; }
+  .hero-badge { margin:0 auto 32px; }
+  .hero-desc { margin-left:auto; margin-right:auto; }
+  .hero-btns { justify-content:center; }
+  .about-inner { grid-template-columns:1fr; gap:50px; }
+  .testimonials-grid { grid-template-columns:repeat(2,1fr); }
+  .news-grid { grid-template-columns:repeat(2,1fr); }
+  .gallery-grid { grid-template-columns:repeat(2,1fr); }
+  .gallery-item:first-child { grid-column:span 2; }
+}
+@media(max-width:768px) {
+  :root {
+    --fs-hero: clamp(40px,11vw,56px);
+    --fs-section: clamp(30px,7vw,40px);
+    --fs-about-h2: clamp(32px,8vw,44px);
+    --fs-cta-h2: clamp(32px,8vw,44px);
+  }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  nav { padding:0 20px; }
+  .features,.about,.cta,.testimonials,.news,.gallery,.faq,.partners { padding:70px 24px; }
+  .timeline,.newsletter { padding:60px 24px; }
+  .hero-left { padding:70px 24px; }
+  .features-grid { grid-template-columns:1fr; }
+  .section-header { flex-direction:column; align-items:flex-start; }
+  .section-sub { text-align:left; }
+  .footer-inner { grid-template-columns:1fr; gap:36px; }
+  footer { padding:48px 24px 24px; }
+  .back-to-top { bottom:76px; right:16px; }
+  .testimonials-grid { grid-template-columns:1fr; }
+  .news-grid { grid-template-columns:1fr; }
+  .gallery-grid { grid-template-columns:1fr; }
+  .gallery-item:first-child { grid-column:span 1; aspect-ratio:4/3; }
+  .countdown-section { padding:50px 24px; }
+  .countdown-inner { flex-direction:column; align-items:flex-start; }
+  .timeline-track { flex-direction:column; align-items:flex-start; gap:0; }
+  .timeline-track::before { width:3px; height:auto; top:0; bottom:0; left:27px; right:auto; background:linear-gradient(180deg, var(--yellow) 30%, var(--yellow-border) 100%); }
+  .timeline-step { flex-direction:row; align-items:flex-start; padding:0 0 28px 0; width:100%; }
+  .tl-dot { margin-bottom:0; margin-right:16px; flex-shrink:0; }
+  .tl-content { display:flex; flex-direction:column; align-items:flex-start; padding-top:10px; }
+  .tl-badge { margin-bottom:5px; }
+  .tl-title,.tl-date { text-align:left; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+  <div class="logo-wrapper">
+   <img src="tt.png"width="200px" height="70px">
+  <a href="martha.html" class="nav-logo">ABC CO <span>MIS</span></a>
+  <ul class="nav-links">
+    <li><a href="martha.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="nav-apply"><a href="apply.html">Apply Now</a></li>
+    <li><a href="product.html">Products</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="martha.html">🏠 Home</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="login.html">🔐 Login</a>
+  <a href="contact.html">📞 Contact</a>
+  <a href="apply.html">🚀 Apply Now</a>
+  <a href="product.html">📦 Products</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-left">
+    <div class="hero-badge">Rwanda TVET Innovation 2026</div>
+    <h1>Innovation<span class="accent">Competition</span>for TVET Students</h1>
+    <p class="hero-desc">Build your future through creativity, technology, and national recognition. Submit your project — shape Rwanda's tomorrow.</p>
+    <div class="hero-btns">
+      <a href="apply.html" class="btn-primary">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="login.html" class="btn-ghost">Learn More <i class="fa-solid fa-circle-info"></i></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop" alt="Innovation" />
+    <div class="tint"></div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stat-item reveal"><h3>200+</h3><p>Projects Submitted</p></div>
+  <div class="stat-item reveal reveal-delay-1"><h3>50+</h3><p>Partner Schools</p></div>
+  <div class="stat-item reveal reveal-delay-2"><h3>30+</h3><p>Districts Reached</p></div>
+  <div class="stat-item reveal reveal-delay-3"><h3>5+</h3><p>Years of Impact</p></div>
+</section>
+
+<!-- COUNTDOWN TIMER -->
+<section class="countdown-section">
+  <div class="countdown-inner">
+    <div class="countdown-text reveal">
+      <div class="section-label">The deadline is near</div>
+      <h3>Competition Deadline</h3>
+    </div>
+    <div class="countdown-boxes reveal reveal-delay-1">
+      <div class="countdown-box"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
+      <div class="countdown-box"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+      <div class="countdown-box"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Minutes</span></div>
+      <div class="countdown-box"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seconds</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-header">
+    <div>
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Everything You Need<br>to Compete &amp; Grow</h2>
+    </div>
+    <p class="section-sub">Four pillars powering Rwanda's TVET innovation ecosystem</p>
+  </div>
+  <div class="features-grid">
+    <a href="innovative.html" class="feature-box reveal">
+      <span class="feature-num">01</span>
+      <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div>
+      <h3>Innovative Ideas</h3>
+      <p>Students submit creative solutions to real-world problems faced in Rwanda today.</p>
+    </a>
+    <a href="collabo.html" class="feature-box reveal reveal-delay-1">
+      <span class="feature-num">02</span>
+      <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
+      <h3>Collaboration</h3>
+      <p>Work alongside schools and mentors from across every district in Rwanda.</p>
+    </a>
+    <a href="online.html" class="feature-box reveal reveal-delay-2">
+      <span class="feature-num">03</span>
+      <div class="feature-icon"><i class="fa-solid fa-laptop"></i></div>
+      <h3>Online System</h3>
+      <p>Apply and track your project status entirely online — fast, easy, paperless.</p>
+    </a>
+    <a href="org.html" class="feature-box reveal reveal-delay-3">
+      <span class="feature-num">04</span>
+      <div class="feature-icon"><i class="fa-solid fa-trophy"></i></div>
+      <h3>Recognition</h3>
+      <p>Top projects win prizes, funding support, and national media exposure.</p>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <div class="section-label">About ABC CO</div>
+      <h2>Driving <span>TVET</span><br>Innovation<br>Nationwide</h2>
+      <p>ABC CO is an NGO based in Kigali, Rwanda, dedicated to promoting innovation and practical education across TVET schools nationwide. Since 2021, we've been building bridges between students, schools, and opportunities.</p>
+      <a href="contact.html" class="btn-primary" style="display:inline-flex;width:fit-content;">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="about-highlights reveal reveal-delay-1">
+      <a href="reach.html" class="highlight-item">
+        <div class="hi-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+        <div><strong>National Reach</strong><span>50+ partner schools across all provinces of Rwanda</span></div>
+      </a>
+      <a href="student.html" class="highlight-item">
+        <div class="hi-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div><strong>Student Centered</strong><span>Programs designed specifically for TVET students to thrive</span></div>
+      </a>
+      <a href="impact.html" class="highlight-item">
+        <div class="hi-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div><strong>Proven Impact</strong><span>200+ projects supported and celebrated since 2021</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Photos of Activities</div>
+      <h2 class="section-title">Our Work in<br>Pictures</h2>
+    </div>
+    <p class="section-sub">Moments from past competitions and school events</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <span class="gallery-tag">Competition 2025</span>
+      <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1400&auto=format&fit=crop" alt="Students presenting projects" loading="lazy" />
+      <div class="gallery-overlay"><span>Final Presentations — Kigali 2025</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <span class="gallery-tag">Workshop</span>
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" alt="Workshop" loading="lazy" />
+      <div class="gallery-overlay"><span>Innovation Workshop</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <span class="gallery-tag">Awards</span>
+      <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?q=80&w=800&auto=format&fit=crop" alt="Award ceremony" loading="lazy" />
+      <div class="gallery-overlay"><span>Award Ceremony</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <span class="gallery-tag">Mentorship</span>
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" alt="Mentorship session" loading="lazy" />
+      <div class="gallery-overlay"><span>Mentorship Sessions</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <span class="gallery-tag">Prototype</span>
+      <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop" alt="Prototyping" loading="lazy" />
+      <div class="gallery-overlay"><span>Student Prototypes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">What Students Say</div>
+      <h2 class="section-title">What Students<br>&amp; Schools Say</h2>
+    </div>
+    <p class="section-sub" style="color:rgba(255,255,255,0.3);">Real voices from our TVET community across Rwanda</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p>"Participating in the ABC CO competition changed my life. I learned many things and discovered a path to grow and develop internationally."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">AM</div>
+        <div><strong>Amina Mukamana</strong><span>IPRC Kigali — ICT Student</span></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <p>"The online system made it so easy to submit our project. We tracked everything from our phone and got timely feedback from mentors. Truly impressive."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">JN</div>
+        <div><strong>Jean Niyonzima</strong><span>IPRC West — Agriculture</span></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+      <p>"As a teacher, I've seen my students grow in confidence. ABC CO gives them a real stage to shine. The national recognition means everything to them."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">GU</div>
+        <div><strong>Grace Uwimana</strong><span>TVET Teacher — Huye</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Latest News</div>
+      <h2 class="section-title">News &amp;<br>Updates</h2>
+    </div>
+    <p class="section-sub">Stay updated with competition news and innovation stories</p>
+  </div>
+  <div class="news-grid">
+    <a href="#" class="news-card reveal">
+      <div class="news-card-img">
+        <span class="news-cat">Announcement</span>
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" alt="Competition launch" loading="lazy" />
+      </div>
+      <div class="news-body">
+        <span class="news-date">May 15, 2026</span>
+        <h4>2026 Competition Applications Now Open</h4>
+        <p>TVET students from all 30 districts can now submit their innovative project proposals through our online system.</p>
+        <span class="news-read">Read More <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+    <a href="#" class="news-card reveal reveal-delay-1">
+      <div class="news-card-img">
+        <span class="news-cat">Success Story</span>
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop" alt="Winner story" loading="lazy" />
+      </div>
+      <div class="news-body">
+        <span class="news-date">April 3, 2026</span>
+        <h4>2026 Winners Secure Funding for Their Startups</h4>
+        <p>Three winning teams from the 2025 edition have received seed funding to develop their solutions into real products.</p>
+        <span class="news-read">Read More <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+    <a href="#" class="news-card reveal reveal-delay-2">
+      <div class="news-card-img">
+        <span class="news-cat">Partnership</span>
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" alt="Partnership" loading="lazy" />
+      </div>
+      <div class="news-body">
+        <span class="news-date">March 20, 2026</span>
+        <h4>ABC CO Adds 10 New Partner Schools in Northern Province</h4>
+        <p>Expanding our footprint, 10 more TVET schools across the Northern Province join our growing national network.</p>
+        <span class="news-read">Read More <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners">
+  <div class="partners-inner">
+    <p class="partners-label reveal">Trusted Partners &amp; Sponsors</p>
+    <div class="partners-logos">
+      <a href="reb.html"><div class="partner-logo reveal"><i class="fa-solid fa-building-columns"></i> REB</div></a>
+       <a href="mineduc.html"><div class="partner-logo reveal reveal-delay-1"><i class="fa-solid fa-landmark"></i> MINEDUC</div></a>
+       <a href="unicef.html"><div class="partner-logo reveal reveal-delay-2"><i class="fa-solid fa-globe"></i> UNICEF Rwanda</div></a>
+      <a href="minocom.html"><div class="partner-logo reveal reveal-delay-3"><i class="fa-solid fa-industry"></i> MINICOM</div></a>
+       <a href="wda.html"><div class="partner-logo reveal"><i class="fa-solid fa-graduation-cap"></i> WDA</div></a>
+      <a href="giz.html"><div class="partner-logo reveal reveal-delay-1"><i class="fa-solid fa-handshake"></i> GIZ Rwanda</div></a>
+       <a href="usaid.html"><div class="partner-logo reveal reveal-delay-2"><i class="fa-solid fa-seedling"></i> USAID</div></a>
+        <a href="mtn.html"><div class="partner-logo reveal reveal-delay-3"><i class="fa-solid fa-star"></i> MTN Rwanda</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-label">Frequently Asked Questions</div>
+        <h2 class="section-title">Frequently Asked<br>Questions</h2>
+      </div>
+    </div>
+    <div class="faq-list reveal reveal-delay-1">
+      <div class="faq-item">
+        <div class="faq-question">Who can apply to participate in the competition?<div class="faq-icon"><i class="fa-solid fa-plus"></i></div></div>
+        <div class="faq-answer">All students from TVET schools in Rwanda are eligible to apply. You must be enrolled in a public or private TVET school that is officially registered in Rwanda.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What can be considered a good project?<div class="faq-icon"><i class="fa-solid fa-plus"></i></div></div>
+        <div class="faq-answer">A good project is one that addresses a real-world problem and demonstrates innovation, feasibility, and impact. It should show creativity in solving challenges and have the potential for sustainable implementation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I submit my project online?<div class="faq-icon"><i class="fa-solid fa-plus"></i></div></div>
+        <div class="faq-answer">Click "Apply Now" on this page, create your account, fill in your project details, upload supporting documents (PDF or images), and submit. You will receive a confirmation email with your application number.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What salaries or prizes do the winners receive?<div class="faq-icon"><i class="fa-solid fa-plus"></i></div></div>
+        <div class="faq-answer">Winners are awarded cash prizes, technology support, and 6 months of mentorship. The first-place project receives 500,000 RWF, the second-place 300,000 RWF, and the third-place 200,000 RWF..</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I apply as a team?<div class="faq-icon"><i class="fa-solid fa-plus"></i></div></div>
+        <div class="faq-answer">Yes! Teams of 2–5 students are encouraged. All team members must be enrolled at the same TVET institution. One member acts as the project lead and primary contact.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">When are the requirements returned?<div class="faq-icon"><i class="fa-solid fa-plus"></i></div></div>
+        <div class="faq-answer">The results will be released within 14 days after application. You will receive an email inviting you to proceed to the next stage. First-level winners will be invited to present their project before a panel of judges.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION TIMELINE -->
+<section class="timeline">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">Competition Stages</div>
+      <h2 class="section-title">Competition<br>Roadmap 2026</h2>
+    </div>
+    <p class="section-sub">All the stages from application to the end of the competition</p>
+  </div>
+  <div class="timeline-track">
+    <div class="timeline-step done reveal">
+      <div class="tl-dot">
+        <i class="fa-solid fa-file-pen"></i>
+        <div class="tl-check"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <div class="tl-content">
+        <span class="tl-badge">finish</span>
+        <p class="tl-title">Applications Open</p>
+        <p class="tl-date">May 1 – May 31</p>
+      </div>
+    </div>
+    <div class="timeline-step active reveal reveal-delay-1">
+      <div class="tl-dot"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <div class="tl-content">
+        <span class="tl-badge">It will be done.</span>
+        <p class="tl-title">Review &amp; Shortlist</p>
+        <p class="tl-date">Jun 1 – Jul 15</p>
+      </div>
+    </div>
+    <div class="timeline-step reveal reveal-delay-2">
+      <div class="tl-dot"><i class="fa-solid fa-users"></i></div>
+      <div class="tl-content">
+        <span class="tl-badge">Good</span>
+        <p class="tl-title">Semi-Finals</p>
+        <p class="tl-date">Aug 1 – Aug 20</p>
+      </div>
+    </div>
+    <div class="timeline-step reveal reveal-delay-3">
+      <div class="tl-dot"><i class="fa-solid fa-star"></i></div>
+      <div class="tl-content">
+        <span class="tl-badge">Good</span>
+        <p class="tl-title">Grand Finals</p>
+        <p class="tl-date">Sep 15, 2026</p>
+      </div>
+    </div>
+    <div class="timeline-step reveal reveal-delay-4">
+      <div class="tl-dot"><i class="fa-solid fa-trophy"></i></div>
+      <div class="tl-content">
+        <span class="tl-badge">Good</span>
+        <p class="tl-title">Awards Ceremony</p>
+        <p class="tl-date">Sep 30, 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="section-label reveal">Breaking News</div>
+    <h2 class="reveal">Log into<br>Our List</h2>
+    <p class="reveal">Submit your email to be the first to receive competition updates, news, and new opportunities.</p>
+    <form class="newsletter-form reveal reveal-delay-1" id="nlForm" onsubmit="return handleNewsletter(event)">
+      <input type="email" id="nlEmail" placeholder="Andika email yawe..." required />
+      <button type="submit">Log in <i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+    <div class="newsletter-success" id="nlSuccess">
+      <i class="fa-solid fa-circle-check"></i>Thank you! We will send you the latest updates.
+    </div>
+    <p class="newsletter-privacy reveal reveal-delay-2">
+      <i class="fa-solid fa-lock"></i> We do not sell or share your email with anyone.
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <div class="cta-text reveal">
+      <h2>Ready to Join<br>the Competition?</h2>
+      <p>Submit your innovative project today and get recognized on a national stage.</p>
+    </div>
+    <a href="get.html" class="btn-dark reveal reveal-delay-1">Get Started <i class="fa-solid fa-rocket"></i></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo">ABC CO MIS</span>
+      <p>Promoting innovation and practical education in TVET schools across Rwanda since 2021.</p>
+      <div class="footer-social">
+        <a href="facebook.html" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="twitter.html" class="social-btn" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="instagram.html" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="linkedin.html" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="youtube.html" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Pages</h4>
+      <a href="martha.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="login.html">Login</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="location.html">📍 Kigali, Rwanda</a>
+      <a href="mailto:marthabera3@gmail.com">📧 marthabera3@gmail.com</a>
+      <a href="tel:+250796705936">📞 +250 796 705 936</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ABC CO Rwanda — All rights reserved</span>
+    <span>Built with ❤️ in Kigali</span>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" title="Garuka hejuru" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Countdown — target: September 30, 2026
+  const deadline = new Date('2026-09-30T23:59:59').getTime();
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = deadline - now;
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Back to top
+  window.addEventListener('scroll', () => {
+    document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Newsletter handler
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const email = document.getElementById('nlEmail').value;
+    if (!email) return false;
+    document.getElementById('nlForm').style.display = 'none';
+    document.getElementById('nlSuccess').classList.add('show');
+    return false;
+  }
+</script>
+</body>
+</html>

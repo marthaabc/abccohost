@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC CO MIS | Contact Us</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --yellow:        #F5C518;
+  --yellow-mid:    #E6B800;
+  --yellow-light:  #FFD700;
+  --yellow-pale:   #FFF9E0;
+  --yellow-glow:   rgba(245,197,24,0.18);
+  --yellow-border: rgba(245,197,24,0.3);
+  --black:         #0A0A00;
+  /* FIX 1: --black-soft was #FFD700 (yellow!) — corrected to dark tone */
+--black-soft:    #FFD700;
+height: 40px;
+  --black:         #0A0A00;
+  --gray-400:      #9A9070;
+  --gray-600:      #5A5240;
+  --shadow-y:      0 8px 32px rgba(50,40,0,0.18);
+  --shadow-y-lg:   0 20px 60px rgba(50,40,0,0.28);
+  --radius-sm:     8px;
+  --radius:        16px;
+  --radius-lg:     28px;
+  --ease:          cubic-bezier(0.22, 1, 0.36, 1);
+  --transition:    0.4s var(--ease);
+  --fs-nav:        10.5px;
+  --fs-body:       15px;
+  --fs-body-sm:    13.5px;
+  --fs-label:      11px;
+  --lh-body:       1.75;
+  --lh-relaxed:    1.9;
+  --lh-heading:    1.08;
+  --ls-wide:       1.5px;
+  --ls-wider:      2px;
+  --ls-tight:      -0.4px;
+  --ls-normal:     0.2px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: 0.5;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 56px; background: var(--black);
+  position: sticky; top: 0; z-index: 1000;
+  height: 68px; border-bottom: 1px solid rgba(245,197,24,0.18);
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif; font-size: 21px; font-weight: 800;
+  letter-spacing: 1.2px; text-decoration: none; color: var(--yellow);
+}
+.nav-logo span { color: rgba(255,255,255,0.22); }
+.nav-links { display: flex; gap: 2px; list-style: none; align-items: center; }
+.nav-links li a {
+  text-decoration: none; color: rgba(255,255,255,0.52);
+  font-family: 'Outfit', sans-serif; font-weight: 500; font-size: var(--fs-nav);
+  letter-spacing: var(--ls-wide); padding: 7px 15px; border-radius: var(--radius-sm);
+  transition: var(--transition); text-transform: uppercase;
+}
+.nav-links li a:hover { color: var(--yellow); background: var(--yellow-glow); }
+.nav-links li a.active { color: var(--yellow); background: var(--yellow-glow); }
+.nav-apply a { background: var(--yellow) !important; color: #000 !important; font-weight: 700; border-radius: var(--radius-sm); }
+.nav-apply a:hover { background: var(--yellow-mid) !important; transform: translateY(-1px); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { width: 24px; height: 2px; background: var(--yellow); border-radius: 2px; transition: 0.3s; display: block; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* FIX 2: Mobile menu background was --black-soft which was yellow — now uses correct dark */
+.mobile-menu {
+  display: none; flex-direction: column;
+  position: fixed; top: 68px; left: 0; right: 0;
+  background: var(--black-soft); padding: 20px; z-index: 999;
+  border-bottom: 2px solid var(--yellow-mid);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  text-decoration: none; padding: 13px 16px; color: rgba(255,255,255,0.75);
+  font-family: 'Outfit', sans-serif; font-weight: 500; border-radius: var(--radius-sm);
+  margin-bottom: 4px; font-size: var(--fs-body); transition: 0.2s;
+}
+.mobile-menu a:hover { background: var(--yellow-glow); color: var(--yellow); }
+
+/* ===== PAGE BANNER ===== */
+.page-banner {
+  background: var(--black-soft);
+  border-bottom: 1px solid var(--yellow-border);
+  padding: 56px 56px 48px;
+  position: relative; overflow: hidden;
+}
+.page-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, var(--yellow-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(245,197,24,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,197,24,0.04) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.page-banner-inner { position: relative; z-index: 2; max-width: 700px; }
+.page-banner .breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: var(--ls-wider);
+  color: rgba(255,255,255,0.3); margin-bottom: 18px;
+}
+.page-banner .breadcrumb a { color: var(--yellow); text-decoration: none; transition: opacity 0.2s; }
+.page-banner .breadcrumb a:hover { opacity: 0.75; }
+
+/* FIX 3: h1 added inside page-banner-inner (was missing — section had no heading) */
+.page-banner h1 {
+  font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 60px);
+  font-weight: 800; line-height: var(--lh-heading); color: var(--white);
+  letter-spacing: var(--ls-tight); margin-bottom: 14px;
+}
+.page-banner h1 span { color: var(--yellow); }
+.page-banner p {
+  color: rgba(255,255,255,0.42); font-size: var(--fs-body);
+  line-height: var(--lh-relaxed); max-width: 480px;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  padding: 80px 56px; background: var(--black);
+}
+.contact-inner {
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 60px; max-width: 1000px; margin: auto; align-items: start;
+}
+
+/* Info side */
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-info-title {
+  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+  color: var(--white); letter-spacing: var(--ls-tight); margin-bottom: 8px;
+}
+.contact-info-sub { color: rgba(255,255,255,0.38); font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); margin-bottom: 12px; }
+.contact-detail {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: rgba(245,197,24,0.04); border: 1px solid rgba(245,197,24,0.12);
+  padding: 16px 18px; border-radius: var(--radius-sm); transition: var(--transition);
+}
+.contact-detail:hover { background: var(--yellow-glow); border-color: var(--yellow-border); transform: translateX(5px); }
+.contact-detail .cd-icon {
+  width: 38px; height: 38px; background: var(--yellow-glow); border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.contact-detail .cd-icon i { color: var(--yellow); font-size: 15px; }
+.contact-detail strong { display: block; color: var(--white); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.contact-detail span { color: rgba(255,255,255,0.38); font-size: var(--fs-body-sm); }
+
+/* Social */
+.contact-social { margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+.social-btn {
+  width: 38px; height: 38px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: rgba(255,255,255,0.38); font-size: 15px;
+  transition: var(--transition);
+}
+.social-btn:hover { background: var(--yellow); border-color: var(--yellow-mid); color: #000; transform: translateY(-3px); }
+
+/* Form */
+.contact-form-box {
+  background: rgba(245,197,24,0.04); border: 1px solid rgba(245,197,24,0.12);
+  border-radius: var(--radius); padding: 36px 32px; transition: border-color 0.4s;
+}
+.contact-form-box:hover { border-color: var(--yellow-border); }
+
+.form-label {
+  display: block; margin-bottom: 8px;
+  font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: var(--ls-wide); color: rgba(255,255,255,0.42);
+}
+
+/* FIX 4: Removed margin-bottom from .form-input — spacing now handled by wrappers */
+.form-input,
+.form-textarea {
+  width: 100%; padding: 14px 16px;
+  background: rgba(255,255,255,0.05); color: var(--white);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm);
+  font-family: 'Outfit', sans-serif; font-size: var(--fs-body);
+  outline: none; transition: border-color 0.3s, background 0.3s;
+}
+.form-textarea { height: 130px; resize: none; }
+.form-input:focus,
+.form-textarea:focus { border-color: var(--yellow); background: rgba(245,197,24,0.05); }
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+/* FIX 5: Spacing now on field wrappers so grid rows and single fields are consistent */
+.form-field { margin-bottom: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+/* Remove bottom margin from inputs inside .form-row to avoid double spacing */
+.form-row .form-field { margin-bottom: 0; }
+
+.btn-submit {
+  width: 100%; padding: 15px;
+  background: var(--yellow); color: #000;
+  border: none; border-radius: var(--radius-sm);
+  font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700;
+  letter-spacing: var(--ls-normal); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: var(--transition); margin-top: 4px;
+}
+.btn-submit:hover { background: var(--yellow-mid); transform: translateY(-3px); box-shadow: 0 12px 30px var(--yellow-glow); }
+
+.form-success {
+  display: none; margin-top: 18px; text-align: center;
+  background: var(--yellow-glow); border: 1px solid var(--yellow-border);
+  border-radius: var(--radius-sm); padding: 14px 20px;
+  color: var(--yellow); font-family: 'Syne', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: var(--ls-tight);
+}
+.form-success.show { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #060600; color: rgba(255,255,255,0.28);
+  padding: 60px 56px 30px;
+  border-top: 1px solid var(--yellow-border);
+}
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+.footer-brand .logo {
+  font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800;
+  color: var(--yellow); letter-spacing: 1px; margin-bottom: 14px; display: block;
+}
+.footer-brand p { font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); max-width: 280px; }
+.footer-social { margin-top: 20px; display: flex; gap: 10px; }
+
+.footer-links h4 {
+  color: rgba(255,255,255,0.65); font-family: 'Syne', sans-serif;
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: var(--ls-wide); margin-bottom: 20px;
+}
+.footer-links a {
+  display: block; color: rgba(255,255,255,0.28); text-decoration: none;
+  margin-bottom: 10px; font-size: var(--fs-body-sm); transition: 0.2s;
+}
+.footer-links a:hover { color: var(--yellow); padding-left: 5px; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; flex-wrap: wrap; gap: 8px;
+}
+.footer-bottom span { color: rgba(255,255,255,0.2); }
+.footer-bottom span:last-child { color: var(--yellow); opacity: 0.5; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+@media(max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .page-banner, .contact-section { padding: 50px 24px; }
+  footer { padding: 48px 24px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  /* FIX 6: On mobile, form-row becomes single column */
+  .form-row { grid-template-columns: 1fr; }
+  .form-row .form-field { margin-bottom: 20px; }
+  .form-row .form-field:last-child { margin-bottom: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="martha.html" class="nav-logo">ABC CO <span>MIS</span></a>
+  <ul class="nav-links">
+    <li><a href="martha.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li class="nav-apply"><a href="apply.html">Apply Now</a></li>
+    <li><a href="product.html">Products</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="martha.html">🏠 Home</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="login.html">🔐 Login</a>
+  <a href="contact.html">📞 Contact</a>
+  <a href="apply.html">🚀 Apply Now</a>
+  <a href="product.html">📦 Products</a>
+</div>
+
+<!-- FIX 3: Page banner restored with proper closing tags and h1 content added -->
+<section class="page-banner">
+  <div class="page-banner-inner">
+    <div class="breadcrumb">
+      <a href="martha.html">Home</a>
+      <i class="fa-solid fa-chevron-right" style="font-size:9px"></i>
+      Contact
+    </div>
+  
+    
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="contact-inner">
+
+    <!-- Left: info -->
+    <div class="contact-info reveal">
+      <div>
+        <h2 class="contact-info-title">We'd love to hear from you</h2>
+        <p class="contact-info-sub">Reach out through any of the channels below, or fill in the form and we'll get back to you within 1–2 business days.</p>
+      </div>
+
+      <div class="contact-detail">
+        <div class="cd-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div><strong>Our Location</strong><span>Kigali, Rwanda</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div><strong>Email Us</strong><span>marthabera3@gmail.com</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon"><i class="fa-solid fa-phone"></i></div>
+        <div><strong>Call Us</strong><span>+250 796 705 936</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon"><i class="fa-solid fa-clock"></i></div>
+        <div><strong>Working Hours</strong><span>Mon – Fri, 8:00 AM – 5:00 PM</span></div>
+      </div>
+
+      <div class="contact-social">
+        <a href="#" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-btn" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <!-- FIX 4 & 5: Inputs wrapped in .form-field divs for consistent spacing -->
+    <div class="contact-form-box reveal reveal-delay-1">
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label" for="name">Full Name</label>
+          <input class="form-input" type="text" id="name" placeholder="Enter your full name">
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" type="email" id="email" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="subject">Subject</label>
+        <input class="form-input" type="text" id="subject" placeholder="What is this about?">
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="message">Message</label>
+        <textarea class="form-textarea" id="message" placeholder="Write your message here..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="sendMessage()">
+        Send Message <i class="fa-solid fa-paper-plane"></i>
+      </button>
+      <div class="form-success" id="successMsg">
+        <i class="fa-solid fa-circle-check"></i> Message sent successfully! We'll reply soon.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo">ABC CO MIS</span>
+      <p>Promoting innovation and practical education in TVET schools across Rwanda since 2021.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-btn" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Pages</h4>
+      <a href="martha.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="login.html">Login</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="#">📍 Kigali, Rwanda</a>
+      <a href="mailto:marthabera3@gmail.com">📧 marthabera3@gmail.com</a>
+      <a href="tel:+250796705936">📞 +250 796 705 936</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ABC CO Rwanda — All rights reserved</span>
+    <span>Built with ❤️ in Kigali</span>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Send message
+  function sendMessage() {
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const success = document.getElementById('successMsg');
+
+    if (!name || !email || !message) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+    messages.push({ name, email, subject, message, date: new Date().toLocaleString() });
+    localStorage.setItem('messages', JSON.stringify(messages));
+
+    success.classList.add('show');
+    document.getElementById('name').value    = '';
+    document.getElementById('email').value   = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('message').value = '';
+
+    setTimeout(() => success.classList.remove('show'), 5000);
+  }
+</script>
+</body>
+</html>

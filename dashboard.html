@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    display:flex;
+    background:#f4f4f4;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:250px;
+    height:100vh;
+    background:#2e7d32;
+    color:white;
+    position:fixed;
+    padding:20px;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    padding:15px;
+    margin:10px 0;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.sidebar ul li:hover{
+    background:#1b5e20;
+}
+
+.sidebar ul li i{
+    margin-right:10px;
+}
+
+/* MAIN CONTENT */
+.main{
+    margin-left:250px;
+    width:100%;
+    padding:20px;
+}
+
+/* HEADER */
+.header{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header h1{
+    color:#2e7d32;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.card i{
+    font-size:40px;
+    color:#2e7d32;
+    margin-bottom:15px;
+}
+
+.card h2{
+    margin-bottom:10px;
+    color:#333;
+}
+
+.card p{
+    color:gray;
+    font-size:18px;
+}
+
+/* TABLE */
+.table-section{
+    margin-top:40px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th,
+table td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+
+table th{
+    background:#2e7d32;
+    color:white;
+}
+
+button{
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    color:white;
+}
+
+.edit{
+    background:orange;
+}
+
+.delete{
+    background:red;
+}
+
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+
+    <ul>
+        <li><i class="fa fa-home"></i> Dashboard</li>
+        <li><i class="fa fa-users"></i> Users</li>
+        <li><i class="fa fa-box"></i> Products</li>
+        <li><i class="fa fa-shopping-cart"></i> Orders</li>
+        <li><i class="fa fa-chart-line"></i> Reports</li>
+        <li><i class="fa fa-cog"></i> Settings</li>
+    </ul>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+        <h3>Welcome Admin</h3>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+        <div class="card">
+            <i class="fa fa-users"></i>
+            <h2>Total Users</h2>
+            <p>150</p>
+        </div>
+
+        <div class="card">
+            <i class="fa fa-box"></i>
+            <h2>Products</h2>
+            <p>80</p>
+        </div>
+
+        <div class="card">
+            <i class="fa fa-shopping-cart"></i>
+            <h2>Orders</h2>
+            <p>45</p>
+        </div>
+
+        <div class="card">
+            <i class="fa fa-money-bill"></i>
+            <h2>Revenue</h2>
+            <p>$1200</p>
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-section">
+        <h2>Recent Orders</h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>Martha</td>
+                <td>Tomatoes</td>
+                <td>Delivered</td>
+                <td>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>John</td>
+                <td>Potatoes</td>
+                <td>Pending</td>
+                <td>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Diane</td>
+                <td>Maize</td>
+                <td>Shipped</td>
+                <td>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
